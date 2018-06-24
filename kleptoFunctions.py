@@ -8,7 +8,8 @@ def chewing_file(num_sections, data, filename, foldername):
     '''
     LIST, DATAFRAMES, & DICTONARIES ONLY.
     when 'swallowing' a pickle causes your notebook to choke, chew it up into batches with klepto
-    breaks up data into num sections and saves the batches into foldername with filename
+    batches object into num sections and saves batchs into folders within foldername
+    each folder will be named accordingly, "K_"+filename+"_1", "K_"+filename+"_2", ...
     '''
     d = klepto.archives.dir_archive('%s' % foldername, cached=True, serialized=True)
     sections = int(len(data)/num_sections)
@@ -41,9 +42,10 @@ def chewing_file(num_sections, data, filename, foldername):
 def puking_file(filename, foldername): 
     '''
     LIST, DATAFRAMES, & DICTONARIES ONLY.
-    auto-detects number of files that CONTAIN the filename.
-    CAUTION: do not name your files too similarly
-    pulls the pieces with filename_# from foldername and reforms them within the notebook
+    auto-detects number of folders within foldername that CONTAIN the filename, as such...
+    "K_"+filename+"_1", "K_"+filename+"_2", ... 
+    (CAUTION: do not name your files too similarly when you batch save)
+    reforms your object with data from the batched folders and returns  
     '''
     folder = os.listdir(foldername)
     files = sorted([s for s in folder if s[2:-2] == filename])
