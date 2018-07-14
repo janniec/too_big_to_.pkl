@@ -6,6 +6,7 @@ import numpy as np
 
 def chewing_file(num_sections, data, filename, foldername): 
     '''
+    Chews/breaks up the data before attempting to swallow/save with pickle. 
     LIST, DATAFRAMES, & DICTONARIES ONLY.
     when 'swallowing' a pickle causes your notebook to choke, chew it up into batches with klepto
     batches object into num sections and saves batchs into folders within foldername
@@ -41,6 +42,7 @@ def chewing_file(num_sections, data, filename, foldername):
     
 def puking_file(filename, foldername): 
     '''
+    Pukes/returns the pieces/batches of the object previously saved.
     LIST, DATAFRAMES, & DICTONARIES ONLY.
     auto-detects number of folders within foldername that CONTAIN the filename, as such...
     "K_"+filename+"_1", "K_"+filename+"_2", ... 
