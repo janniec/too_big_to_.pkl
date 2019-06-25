@@ -54,7 +54,7 @@ def puking_file(filename, foldername):
     d = klepto.archives.dir_archive('%s' % foldername, cached=True, serialized=True)
     for file in files:
         d.load(file[2:])
-    print(d.keys())
+#     print(d.keys())
     
     if type(d[filename+"_1"]) == pd.DataFrame:
         df = []
@@ -73,6 +73,11 @@ def puking_file(filename, foldername):
     else:
         file = d[filename]
         print("data is not a DF, list, or dict")
-        
+    
+    print('Filename:', filename, 
+          '\n# of Folders:', len(d.keys()),
+          '\nType:', type(file), 
+          '\nLen:', len(file))
+    
     d.clear()
     return file
